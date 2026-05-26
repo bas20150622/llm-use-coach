@@ -18,7 +18,7 @@ Three psychological principles drive the design:
 
 ### 1. Deliberate practice loop
 
-Passive feedback doesn't change behavior. Each coaching session ends with one specific focus for your next session — something concrete to try. The next coaching session opens by checking whether you practiced it and what happened. This creates intentionality: you enter a session with something to work on, not just a task to complete.
+Passive feedback doesn't change behavior. Each coaching session ends with situational advice — "next time you're in a situation like X, try Y." This is guidance, not homework. If the advice doesn't align with what you're working on in your next session, it's irrelevant and should be ignored. The coach checks whether a relevant situation arose and whether the advice applied — not whether you forced it into an unrelated task. Improvement happens through real project work, not contrived exercises.
 
 ### 2. Blind spot surfacing
 
@@ -105,7 +105,7 @@ analyzed:
     debrief: 2026-05-25-second-brain-session-uuid-1.md
   session-uuid-2:
     ...
-focus_next: "Specify output format before requesting explanations"
+advice_next: "Specify output format before requesting explanations"
 ```
 
 ### Score file format
@@ -168,10 +168,10 @@ the current project, which wastes a correction round.
 | 2026-05-24 | second-brain |    3 |   4 |     2 |    3 |     4 |
 | 2026-05-25 | second-brain |    4 |   4 |     3 |    3 |     4 |
 
-## Focus log
-| Date       | Focus given                          | Practiced? | Result        |
-|------------|--------------------------------------|------------|---------------|
-| 2026-05-24 | Specify scope for side tasks         | Yes        | Improved to 3 |
+## Advice log
+| Date       | Advice given                                              | Situation arose? | Result        |
+|------------|-----------------------------------------------------------|------------------|---------------|
+| 2026-05-24 | When starting a side task, state it's separate from current scope | Yes              | Improved to 3 |
 ```
 
 ## How to use

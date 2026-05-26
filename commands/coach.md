@@ -10,7 +10,7 @@ Then follow this workflow:
 - Read `~/.local/share/llm-use-coach/state.yaml` (may not exist yet — that means first run).
 - Read `~/.local/share/llm-use-coach/profile.md` (may not exist yet).
 - Read all files in `~/.local/share/llm-use-coach/lessons/` to understand known patterns.
-- Note the `focus_next` field from state.yaml — this is what the user committed to practicing.
+- Note the `advice_next` field from state.yaml — this is what the user committed to practicing.
 
 ## 2. Find and parse session transcripts
 
@@ -50,12 +50,13 @@ For each new session, analyze the HUMAN's messages across five dimensions. Focus
 
 Score each dimension 1-5 per the rubrics in the README.
 
-## 4. Check the deliberate practice focus
+## 4. Check the practice advice
 
-If there was a `focus_next` from the previous coaching session:
-- Look for evidence the human practiced it in the new session(s)
-- Note whether it helped, didn't come up, or was ignored
-- This goes in the coaching output
+If there was a `advice_next` from the previous coaching session:
+- Check whether a situation arose where the advice was relevant
+- If yes: did the human apply it? Did it help?
+- If no relevant situation arose: say so and move on — the advice was contextual, not an assignment
+- Never frame unapplied advice as failure. It only matters when the situation fits.
 
 ## 5. Compare against trends
 
@@ -77,8 +78,8 @@ Structure as coaching dialogue, not a report. Use this format:
 |-----------|-------|-------|----------|
 | ...       | ...   | ...   | ...      |
 
-## Practice check
-(Did the human practice the focus from last session? What happened?)
+## Previous advice check
+(Did a situation arise where the previous advice was relevant? If yes, was it applied and did it help? If the situation didn't come up, say so and move on.)
 
 ## Do more of
 (Specific things from this session that worked well. Cite exact exchanges.)
@@ -89,8 +90,8 @@ Structure as coaching dialogue, not a report. Use this format:
 ## Blind spots
 (Patterns the human probably doesn't see. Situational triggers. Unconscious habits.)
 
-## Focus for next session
-(One specific, concrete thing to practice. Not a general principle — a testable action.)
+## Advice for next time
+(Situational advice: "next time you're in a situation like X, try Y." This is guidance tied to a specific type of situation observed in this session — not homework. If the situation doesn't arise, the advice is irrelevant.)
 ```
 
 Be direct. No hedging, no "great job overall." Say what you see.
@@ -112,14 +113,14 @@ For each dimension where you found something notable:
 Read and rewrite `~/.local/share/llm-use-coach/profile.md`:
 - Update the trajectory table with the new session's scores
 - Update strengths, growth areas, and resolved lists based on current lesson statuses
-- Update the focus log with the previous focus and whether it was practiced
+- Update the advice log with the previous advice and whether a relevant situation arose
 - Keep it concise — this is a dashboard, not a narrative
 
 ## 10. Update state
 
 Update `~/.local/share/llm-use-coach/state.yaml`:
 - Add each analyzed session ID with its project, date, and debrief filename
-- Set `focus_next` to the focus you gave in the coaching output
+- Set `advice_next` to the focus you gave in the coaching output
 
 ## 11. Present the coaching output
 
