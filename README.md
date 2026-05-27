@@ -2,9 +2,22 @@
 
 ## What this is
 
-A coaching system that helps you become a better LLM collaborator. After a Claude Code session, you invoke `/coach` and an AI coach analyzes *your* side of the conversation — how you prompted, steered, corrected, and directed the work. It gives you specific, evidence-based feedback grounded in what actually happened.
+A coaching system that helps you become a better LLM collaborator. After a Claude Code session, you invoke `/llm-use-coach` and an AI coach analyzes *your* side of the conversation — how you prompted, steered, corrected, and directed the work. It gives you specific, evidence-based feedback grounded in what actually happened.
 
 This is not a tool for improving the LLM's responses. It's a tool for improving *you*.
+
+## Installation
+
+Copy the command file to your global Claude Code commands directory:
+
+```bash
+mkdir -p ~/.claude/commands
+cp commands/llm-use-coach.md ~/.claude/commands/
+```
+
+This makes `/llm-use-coach` available in every project. The command reads session transcripts from the current project's Claude Code directory, so it works anywhere without per-project setup.
+
+The coach stores its data (scores, lessons, debriefs) in `~/.local/share/llm-use-coach/`. This directory is created automatically on first run.
 
 ## Why it exists
 
@@ -179,7 +192,7 @@ the current project, which wastes a correction round.
 From any Claude Code session:
 
 ```
-/coach
+/llm-use-coach
 ```
 
 The coach analyzes the current project's session transcripts, compares against your history, and produces a coaching session. Run it at the end of a work session, or periodically during long projects.
