@@ -17,7 +17,7 @@ cp commands/llm-use-coach.md ~/.claude/commands/
 
 This makes `/llm-use-coach` available in every project. The command reads session transcripts from the current project's Claude Code directory, so it works anywhere without per-project setup.
 
-The coach stores its data (scores, lessons, debriefs) in `~/.local/share/llm-use-coach/`. This directory is created automatically on first run.
+The coach stores its data (scores, lessons, debriefs) in `~/.local/share/llm-use-coach/`.
 
 ## Why it exists
 
@@ -97,7 +97,6 @@ observation -> pattern -> principle -> resolved
 
 ```
 ~/.local/share/llm-use-coach/
-    README.md              # this file (coaching philosophy)
     state.yaml             # tracks which sessions have been analyzed
     profile.md             # current strengths, growth areas, trajectory
     debriefs/              # per-session coaching output
