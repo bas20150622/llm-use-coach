@@ -6,18 +6,45 @@ A coaching system that helps you become a better LLM collaborator. After a Claud
 
 This is not a tool for improving the LLM's responses. It's a tool for improving *you*.
 
+## Prerequisites
+
+- [Claude Code](https://claude.ai/code)
+- Python 3.6+
+
 ## Installation
 
-Copy the command file to your global Claude Code commands directory:
+Copy the command file and parser script:
 
 ```bash
-mkdir -p ~/.claude/commands
+mkdir -p ~/.claude/commands ~/.local/share/llm-use-coach
 cp commands/llm-use-coach.md ~/.claude/commands/
+cp scripts/parse-sessions.py ~/.local/share/llm-use-coach/
 ```
 
 This makes `/llm-use-coach` available in every project. The command reads session transcripts from the current project's Claude Code directory, so it works anywhere without per-project setup.
 
 The coach stores its data (scores, lessons, debriefs) in `~/.local/share/llm-use-coach/`.
+
+### Permissions
+
+The coach reads session transcripts and writes analysis files. To avoid permission prompts on every run, add these to your `~/.claude/settings.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Read(~/.local/share/llm-use-coach/**)",
+      "Write(~/.local/share/llm-use-coach/**)",
+      "Read(~/.claude/projects/**)",
+      "Bash(ls ~/.local/share/llm-use-coach/*)",
+      "Bash(ls ~/.claude/projects/*)",
+      "Bash(python3 ~/.local/share/llm-use-coach/parse-sessions.py *)"
+    ]
+  }
+}
+```
+
+Merge these into your existing `permissions.allow` array if you already have one.
 
 ## Why it exists
 

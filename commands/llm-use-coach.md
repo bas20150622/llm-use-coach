@@ -141,9 +141,22 @@ Follow this workflow:
 ## 2. Find and parse session transcripts
 
 - Determine the current project's Claude Code project directory. The session transcripts are JSONL files stored in `~/.claude/projects/` under a directory named after the working directory path (with slashes replaced by dashes, prefixed with a dash). For example, working directory `/Users/brest/claude/second-brain` maps to `~/.claude/projects/-Users-brest-claude-second-brain/`.
-- List all `.jsonl` files in that directory.
-- Skip any session IDs already listed in `state.yaml` (already analyzed).
-- For each new session, parse the JSONL: extract lines where `type` is `user` or `assistant`. The message content is in `obj.message.content` (string or list of text parts). Build a clean exchange log.
+- Build the skip list: comma-separated session IDs from `state.yaml` that have already been analyzed.
+- Run: `python3 ~/.local/share/llm-use-coach/parse-sessions.py <project-dir> --skip <id1,id2,...>`
+- The script outputs clean exchanges per session in this format:
+  ```
+  === SESSION: <session-id> ===
+  TIMESTAMP_FIRST: <ts>
+  TIMESTAMP_LAST: <ts>
+  EXCHANGE_COUNT: <n>
+
+  [1] HUMAN:
+  <message text>
+
+  [2] ASSISTANT:
+  <message text>
+  ```
+- Use this output as the basis for analysis. Do not parse JSONL files directly.
 
 ## 3. Analyze the human's prompting
 
